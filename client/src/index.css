@@ -1,0 +1,92 @@
+:root {
+  --selected-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--selected-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+button,
+select,
+option,
+input {
+  font-family: var(--selected-font);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  top: 0;
+}
+
+h1 {
+  background-color: var(--colors-primary);
+  text-align: center;
+  color: var(--colors-background);
+  font-weight: 600;
+  padding: 25px 0px;
+  width: 100%;
+  margin: 0;
+}
+
+#topSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 700px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 12px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 1px solid var(--colors-section1);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--colors-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  #topSection {
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  body,
+  button,
+  select,
+  option,
+  input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}

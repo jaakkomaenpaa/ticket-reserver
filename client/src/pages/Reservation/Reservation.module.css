@@ -1,0 +1,192 @@
+.container {
+  background-color: var(--colors-section2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0px;
+}
+
+.reservationForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+}
+
+.header {
+  font-size: 20px;
+  color: var(--colors-primary);
+}
+
+.submitButton {
+  padding: 10px;
+  background-color: var(--colors-primary);
+  color: var(--colors-accentText);
+  border: 1px solid var(--colors-primary);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.4s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: var(--colors-background);
+  color: var(--colors-primary);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2px;
+}
+
+.input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 2px solid var(--colors-secondary);
+  background-color: var(--colors-background);
+  font-size: 16px;
+  color: var(--colors-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 88%;
+}
+
+.input:focus {
+  border-color: var(--colors-primary);
+  box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
+  outline: none;
+}
+
+.input:hover {
+  border-color: var(--colors-primary);
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.inputWrapper:hover label {
+  color: var(--colors-secondary);
+}
+
+.inputWrapper label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: inherit;
+  color: var(--colors-primary);
+  padding: 0 5px;
+  font-size: 16px;
+  transition: 0.3s ease;
+  text-wrap: nowrap;
+  cursor: inherit;
+}
+
+.infoBox {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoText {
+  padding: 10px;
+}
+
+.stopButton {
+  padding: 10px 50px;
+  background-color: var(--colors-primary);
+  color: var(--colors-accentText);
+  border: 1px solid var(--colors-primary);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.4s ease;
+}
+
+.stopButton:hover {
+  background-color: var(--colors-background);
+  color: var(--colors-primary);
+}
+
+.statusMessage {
+  margin: 8px 0px;
+}
+
+.statusList {
+  margin: 10px;
+  border: 1px solid var(--colors-primary);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.accessContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+
+.accessInput {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  background-color: var(--colors-background);
+}
+
+.accessInput:focus {
+  border-color: var(--colors-primary);
+  box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
+  outline: none;
+}
+
+.accessButton {
+  background: none;
+  border: 1px solid var(--colors-primary);
+  background-color: var(--colors-primary);
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.accessButton:hover {
+  border-color: var(--colors-primary);
+  box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
+  outline: none;
+}
+
+.arrowIcon {
+  color: var(--colors-accentText);
+}
+
+.errorText {
+  color: var(--colors-error);
+  text-align: center;
+}
+
+@media screen and (min-width: 700px) {
+  .inputWrapper .input:focus + label,
+  .inputWrapper .input:not(:placeholder-shown) + label {
+    left: 310px;
+    font-size: 16px;
+    color: var(--colors-primary);
+    overflow: -moz-hidden-unscrollable;
+  }
+}
+

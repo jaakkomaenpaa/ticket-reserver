@@ -1,0 +1,136 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--colors-section3);
+  padding: 10px 0px;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 400px;
+}
+
+.testContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  color: var(--colors-defaultText);
+  font-size: 20px;
+}
+
+.infoText {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.infoLabel,
+.statusTextValid {
+  color: var(--colors-defaultText);
+  margin: 0;
+}
+
+.statusTextInvalid {
+  color: var(--colors-error);
+  margin: 0;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: -20px;
+}
+
+.testInput {
+  padding: 10px 50px 10px 15px;
+  font-size: 16px;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  background-color: var(--colors-background);
+  width: 300px;
+}
+
+.testInput:focus {
+  border-color: var(--colors-primary);
+  box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
+  outline: none;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  border-left: 1px solid lightgray;
+  cursor: pointer;
+  position: relative;
+  right: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trashIcon {
+  transition: 0.3s ease;
+  color: gray;
+}
+
+.trashIcon:hover {
+  color: lightgray;
+}
+
+.testButton {
+  background: none;
+  border: 1px solid var(--colors-primary);
+  background-color: var(--colors-primary);
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.testButton:hover {
+  border-color: var(--colors-primary);
+  box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
+  outline: none;
+}
+
+.arrowIcon {
+  color: var(--colors-accentText);
+}
+
+.tokenStatus {
+  margin-top: 5px;
+  font-size: 16px;
+  height: 40px;
+  color: var(--colors-defaultText);
+}
+
+.errorText {
+  color: var(--colors-error);
+}
+
+.successMessage {
+  color: var(--colors-defaultText);
+}
+
+@media screen and (max-width: 700px) {
+  .testInput {
+    width: 200px;
+  }
+  .textBox {
+    width: 200px;
+  }
+}
