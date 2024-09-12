@@ -71,8 +71,9 @@ const Reservation = () => {
       window.localStorage.setItem(config.ACCESS_KEY, 'true')
       setAccessAllowed(true)
       setError('')
+    } else {
+      setError('Incorrect access code')
     }
-    setError('Incorrect access code')
   }
 
   if (!accessAllowed) {

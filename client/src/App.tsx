@@ -1,4 +1,4 @@
-import FontSelector from './components/FontSelector'
+import Settings from './components/Settings'
 import Footer from './pages/Footer'
 import Help from './pages/Help'
 import Home from './pages/Home'
@@ -10,10 +10,9 @@ const App = () => {
     <>
       <header>
         <h1>Ticket reserver</h1>
-        <FontSelector />
+        <Settings />
       </header>
       <main>
-
         <section id='topSection'>
           <Home />
           <Reservation />

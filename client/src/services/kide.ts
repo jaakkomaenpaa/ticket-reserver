@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-import { getRequestId, reverseString, stripIdFromUrl } from '../utils'
+import {
+  getRequestId,
+  processProducts,
+  reverseString,
+  stripIdFromUrl,
+} from '../utils'
 import config from '../config'
 import {
   ApiProductModel,
@@ -112,15 +117,7 @@ const getEventsByCity = async (city: City): Promise<ApiProduct[]> => {
     const request = await axios.get(
       `${config.KIDE_PRODUCT_URL}?city=${cityString}&productType=1`
     )
-    const products: ApiProduct[] = request.data.model
-      .filter((product: ApiProduct) => !product.salesStarted)
-      .map((product: ApiProduct) => {
-        return {
-          ...product,
-          city,
-        }
-      })
-    return products
+    return processProducts(request.data.model)
   } catch (error) {
     console.log(error)
     return []
@@ -133,11 +130,7 @@ const getEventsBySearchText = async (searchText: string): Promise<ApiProduct[]> 
       `${config.KIDE_SEARCH_URL}?searchText=${searchText}`
     )
     const model: ApiSearchModel = request.data.model
-    const products: ApiProduct[] = model.products.filter(
-      (product: ApiProduct) => !product.salesStarted
-    )
-
-    return products
+    return processProducts(model.products)
   } catch (error) {
     console.log(error)
     return []

@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  right: 20px;
+}
+
+.settingsIcon {
+  cursor: pointer;
+  color: var(--colors-accentText);
+  transition: 0.3s ease;
+}
+
+.settingsIcon:hover {
+  color: var(--colors-secondary);
+}
+
+.settingsIconActive {
+  cursor: pointer;
+  color: var(--colors-secondary);
+  transition: 0.3s ease;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fontContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.themeContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.settingKey {
+  width: 50px;
+}
+
+

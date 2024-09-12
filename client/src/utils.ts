@@ -1,4 +1,5 @@
 import config from './config'
+import { ApiProduct } from './types'
 
 export const themeToCssVariables = (theme: Record<string, any>) => {
   const toCssVariables = (obj: Record<string, any>, prefix: string = '--') => {
@@ -58,4 +59,13 @@ export const stripIdFromUrl = (url: string): string => {
   }
   const parts = url.split('/')
   return parts[parts.length - 1]
+}
+
+export const processProducts = (products: ApiProduct[]) => {
+  return products
+    .filter((product: ApiProduct) => !product.salesStarted)
+    .sort(
+      (a: ApiProduct, b: ApiProduct) =>
+        new Date(a.dateSalesFrom).getTime() - new Date(b.dateSalesFrom).getTime()
+    )
 }

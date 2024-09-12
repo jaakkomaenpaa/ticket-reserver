@@ -1,9 +1,4 @@
-import { Font } from '../types'
-
-interface FontInfo {
-  display: string
-  value: string
-}
+import { Font, FontInfo } from '../types'
 
 export const fonts: Record<Font, FontInfo> = {
   [Font.Arial]: {

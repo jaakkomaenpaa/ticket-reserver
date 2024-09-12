@@ -1,7 +1,4 @@
-.fontSelect {
-  position: absolute;
-  vertical-align: center;
-  right: 20px;
+.itemSelect {
   padding: 10px 15px;
   border: 1px solid var(--colors-primary);
   border-radius: 14px;
@@ -14,20 +11,14 @@
   cursor: pointer;
 }
 
-.fontSelect:hover {
+.itemSelect:hover {
   border-color: var(--colors-primary);
   box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
   outline: none;
 }
 
-.fontSelect:focus {
+.itemSelect:focus {
   border-color: var(--colors-primary);
   box-shadow: 0 0 5px var(--colors-primaryBorderShadow);
   outline: none;
-}
-
-@media screen and (max-width: 650px) {
-  .fontSelect {
-    display: none;
-  }
 }

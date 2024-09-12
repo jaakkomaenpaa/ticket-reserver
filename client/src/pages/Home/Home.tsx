@@ -32,6 +32,7 @@ const Home = () => {
       return
     }
     setIsLoading(true)
+    setCity(City.Any)
     setSearchInput('')
     const products = await kideService.getEventsBySearchText(searchInput)
     setEvents(products)

@@ -39,6 +39,7 @@ const Help = () => {
         <nav className={styles.navbar}>
           {pages.map(page => (
             <NavLink
+              key={page.header}
               label={page.header}
               isActive={page.component.type === currentPage.type}
               callback={() => setCurrentPage(page.component)}

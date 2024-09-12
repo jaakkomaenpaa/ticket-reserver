@@ -35,12 +35,12 @@
   cursor: pointer;
   font-size: 16px;
   text-wrap: wrap;
-  color: var(--colors-primary);
+  color: var(--colors-defaulText);
 }
 
 .link:not(:last-child),
 .linkActive:not(:last-child) {
-  border-right: 1px solid black;
+  border-right: 1px solid var(--colors-primary);
 }
 
 .linkActive {

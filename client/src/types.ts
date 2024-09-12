@@ -72,15 +72,21 @@ export enum City {
 }
 
 export enum Font {
-  Arial = 'Arial',
-  ComicSans = 'Comic Sans',
-  CourierNew = 'Courier New',
-  GillSans = 'Gill Sans',
-  LucidaSans = 'Lucida Sans',
-  Monospace = 'Monospace',
-  SegoeUI = 'Segoe UI',
-  TimesNewRoman = 'Times New Roman',
+  Arial = 'Arial, Helvetica, sans-serif',
+  ComicSans = 'cursive',
+  CourierNew = '"Courier New", Courier, monospace',
+  GillSans = '"Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif',
+  LucidaSans = '"Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva',
+  Monospace = 'monospace',
+  SegoeUI = '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
+  TimesNewRoman = '"Times New Roman", Times, serif',
 }
+
+export interface FontInfo {
+  display: string
+  value: string
+}
+
 
 export enum ReservationStatus {
   NoTicketsAvailable = 400,
@@ -93,4 +99,12 @@ export enum ReservationStatus {
 export enum LocalStorageKey {
   Font = 'font',
   KideAuthToken = 'kideAuthToken',
+  Theme = 'theme'
+}
+
+export enum Theme {
+  Purple = 'Purple',
+  Blue = 'Blue',
+  Orange = 'Orange',
+  Green = 'Green',
 }

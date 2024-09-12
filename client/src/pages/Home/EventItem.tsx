@@ -20,7 +20,6 @@ const EventItem = ({ event }: EventItemProps) => {
       top: rect.top - rect.height - 60,
       left: rect.left
     })
-    console.log('Rect', rect)
     setShowModal(true)
   }
 
