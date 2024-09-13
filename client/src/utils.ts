@@ -31,10 +31,19 @@ export const formatTime = (ms: number): string => {
 export const formatDate = (date: Date): string => {
   const day = date.getDate()
   const month = date.getMonth() + 1
-  const hours = date.getHours()
   const year = date.getFullYear()
+  let hours = date.getHours().toString()
+  let minutes = date.getMinutes().toString()
 
-  return `${day}.${month}.${year} @${hours}:00`
+  if (hours.length === 1) {
+    hours = '0' + hours
+  }
+
+  if (minutes.length === 1) {
+    minutes += '0'
+  }
+
+  return `${day}.${month}.${year} @${hours}:${minutes}`
 }
 
 export const reverseString = (string: string): string => {

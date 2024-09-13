@@ -18,10 +18,12 @@ const Reservation = () => {
   const [ticketIndex, setTicketIndex] = useState<string>('')
   const [keyword, setKeyWord] = useState<string>('')
   const [error, setError] = useState<string>('')
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false)
 
   const { eventId } = useEvent()
   const { savedToken } = useAuthToken()
 
+  // Handle automatic event id and token placements
   useEffect(() => {
     if (eventId) {
       setEventUrl(eventId)
@@ -33,12 +35,22 @@ const Reservation = () => {
     }
   }, [eventId, savedToken])
 
-  // Define if user has access or no
+  // Defina access and screen width
   useEffect(() => {
     if (window.localStorage.getItem(config.ACCESS_KEY) === 'true') {
       setAccessAllowed(true)
     }
-  }, [accessAllowed])
+
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 600)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   // Submit reservation and start bot
   const submit = async (event: FormEvent<HTMLButtonElement | HTMLFormElement>) => {
@@ -112,7 +124,7 @@ const Reservation = () => {
           <div className={styles.inputWrapper}>
             <input
               id='eventUrl'
-              placeholder=''
+              placeholder={isSmallScreen ? 'Event url' : ''}
               className={styles.input}
               type='text'
               value={eventUrl}
@@ -125,7 +137,7 @@ const Reservation = () => {
           <div className={styles.inputWrapper}>
             <input
               id='authToken'
-              placeholder=''
+              placeholder={isSmallScreen ? 'Bearer token' : ''}
               className={styles.input}
               type='text'
               value={authToken}
@@ -138,7 +150,7 @@ const Reservation = () => {
           <div className={styles.inputWrapper}>
             <input
               id='ticketIndex'
-              placeholder=''
+              placeholder={isSmallScreen ? 'Ticket index' : ''}
               className={styles.input}
               type='text'
               value={ticketIndex}
@@ -151,7 +163,7 @@ const Reservation = () => {
           <div className={styles.inputWrapper}>
             <input
               id='keyword'
-              placeholder=''
+              placeholder={isSmallScreen ? 'Keyword' : ''}
               className={styles.input}
               type='text'
               value={keyword}

@@ -25,6 +25,7 @@ const getEvent = async (eventUrl: string): Promise<ProductInfo | null> => {
     const product: ApiProduct = model.product
 
     return {
+      name: product.name,
       saleStart: new Date(product.dateSalesFrom),
       salesUntil: new Date(product.dateSalesUntil),
       salesStarted: product.salesStarted,

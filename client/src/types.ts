@@ -44,6 +44,7 @@ export interface ApiProduct {
 }
 
 export interface ProductInfo {
+  name: string
   saleStart: Date
   salesUntil: Date
   salesStarted: boolean

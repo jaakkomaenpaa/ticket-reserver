@@ -25,7 +25,7 @@ export const initBot = async (
     sendStatusMessage('Event not found :(')
     return null
   }
-  sendStatusMessage('Event found')
+  sendStatusMessage(`Event found: ${event.name}`)
   return new Bot(
     eventUrl,
     authToken,

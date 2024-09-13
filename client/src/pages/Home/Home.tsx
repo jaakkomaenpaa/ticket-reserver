@@ -43,15 +43,17 @@ const Home = () => {
     <div className={styles.container}>
       <p className={styles.header}>Find events</p>
       <div className={styles.searchContainer}>
-        <input
-          className={styles.searchInput}
-          placeholder='Search'
-          value={searchInput}
-          onChange={e => handleSearchInputChange(e)}
-        />
-        <button className={styles.searchButton} onClick={search}>
-          <IoSearch className={styles.searchIcon} />
-        </button>
+        <div className={styles.inputContainer}>
+          <input
+            className={styles.searchInput}
+            placeholder='Search'
+            value={searchInput}
+            onChange={e => handleSearchInputChange(e)}
+          />
+          <button className={styles.searchButton} onClick={search}>
+            <IoSearch className={styles.searchIcon} />
+          </button>
+        </div>
         <select
           name='city'
           className={styles.citySelect}

@@ -17,7 +17,7 @@ const EventItem = ({ event }: EventItemProps) => {
   const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
     setModalStyle({
-      top: rect.top - rect.height - 60,
+      top: rect.top - rect.height - 70,
       left: rect.left
     })
     setShowModal(true)

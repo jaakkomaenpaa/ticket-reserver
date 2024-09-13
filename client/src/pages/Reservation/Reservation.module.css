@@ -180,7 +180,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 600px) {
   .inputWrapper .input:focus + label,
   .inputWrapper .input:not(:placeholder-shown) + label {
     left: 310px;
@@ -190,3 +190,8 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .inputWrapper label {
+    display: none;
+  }
+}
