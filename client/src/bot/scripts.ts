@@ -4,14 +4,19 @@ import {
   ApiTicketVariant,
   ProductInfo,
   ReservationStatus,
+  ReserveMode,
   UserPreferences,
 } from '../types'
 import config from '../config'
 
-export const startBot = async (bot: Bot): Promise<void> => {
+export const startBot = async (bot: Bot, mode: ReserveMode): Promise<void> => {
   await bot.waitForSaleStart()
   await bot.getEventData()
   await bot.startReservation()
+
+  if (mode === ReserveMode.Test) {
+    await bot.clearCart()
+  }
 }
 
 export const initBot = async (

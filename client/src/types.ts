@@ -88,19 +88,19 @@ export interface FontInfo {
   value: string
 }
 
-
 export enum ReservationStatus {
   NoTicketsAvailable = 400,
   InvalidAuthToken = 401,
   CancelFailed = 403,
   EventNotFound = 404,
-  Success = 200
+  Success = 200,
 }
 
 export enum LocalStorageKey {
   Font = 'font',
   KideAuthToken = 'kideAuthToken',
-  Theme = 'theme'
+  Theme = 'theme',
+  ReservationMode = 'reserveMode',
 }
 
 export enum Theme {
@@ -108,4 +108,9 @@ export enum Theme {
   Blue = 'Blue',
   Orange = 'Orange',
   Green = 'Green',
+}
+
+export enum ReserveMode {
+  Test = 'TEST',
+  Default = 'DEFAULT',
 }

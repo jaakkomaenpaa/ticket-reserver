@@ -1,11 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Settings.module.css'
 import { IoSettingsOutline } from 'react-icons/io5'
 import Modal from '../Modal'
 import { FontSelector, ThemeSelector } from '../Selectors'
+import { LocalStorageKey, ReserveMode } from '../../types'
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [reserveMode, setReserveMode] = useState<ReserveMode>(ReserveMode.Default)
+
+  useEffect(() => {
+    const mode = window.localStorage.getItem(LocalStorageKey.ReservationMode)
+    if (mode) {
+      setReserveMode(mode as ReserveMode)
+    }
+  }, [])
 
   const position = {
     top: 40,
@@ -14,6 +23,13 @@ const Settings = () => {
 
   const openModal = () => {
     setIsOpen(!isOpen)
+  }
+
+  const handleCheckbox = () => {
+    const newMode =
+      reserveMode === ReserveMode.Default ? ReserveMode.Test : ReserveMode.Default
+    setReserveMode(newMode)
+    window.localStorage.setItem(LocalStorageKey.ReservationMode, newMode)
   }
 
   return (
@@ -34,18 +50,27 @@ const Settings = () => {
       >
         <div className={styles.modalContent}>
           {' '}
-          <div className={styles.fontContainer}>
+          <span className={styles.settingContainer}>
             <div className={styles.settingKey}>Font: </div>
             <div className={styles.settingValue}>
               <FontSelector customStyles={{ width: '150px' }} />
             </div>
-          </div>
-          <div className={styles.themeContainer}>
+          </span>
+          <span className={styles.settingContainer}>
             <div className={styles.settingKey}>Theme:</div>
             <div className={styles.settingValue}>
               <ThemeSelector customStyles={{ width: '150px' }} />
             </div>
-          </div>
+          </span>
+          <span className={styles.settingContainer}>
+            <div className={styles.settingKey}>Test mode?</div>
+            <input
+              className={styles.checkbox}
+              type='checkbox'
+              checked={reserveMode === ReserveMode.Test}
+              onChange={handleCheckbox}
+            />
+          </span>
         </div>
       </Modal>
     </div>

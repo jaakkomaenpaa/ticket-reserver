@@ -10,7 +10,7 @@ interface InfoBoxProps {
 // Holds a list of status messages that occur during reservation process
 const InfoBox = ({ statusList, saleStartTime }: InfoBoxProps) => {
   return (
-    <Card customStyles={{ alignItems: 'center' }}>
+    <Card customStyles={{ alignItems: 'center',  width: '80%'}}>
       <div className={styles.infoBox}>
         <p className={styles.infoText}>
           Refreshing the page will stop the reservation process.
@@ -23,10 +23,13 @@ const InfoBox = ({ statusList, saleStartTime }: InfoBoxProps) => {
             </div>
           ))}
         </div>
+        <button
+          className={styles.stopButton}
+          onClick={() => window.location.reload()}
+        >
+          Stop
+        </button>
       </div>
-      <button className={styles.stopButton} onClick={() => window.location.reload()}>
-        Stop
-      </button>
     </Card>
   )
 }

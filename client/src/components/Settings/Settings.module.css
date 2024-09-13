@@ -26,22 +26,18 @@
   padding-bottom: 20px;
 }
 
-.fontContainer {
+.settingContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
-}
-
-.themeContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .settingKey {
   width: 50px;
 }
 
-
+.checkbox {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+}

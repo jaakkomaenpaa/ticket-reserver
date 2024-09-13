@@ -56,16 +56,16 @@ class Bot {
 
     // Reserve based on keyword
     if (keyword.length >= 3) {
-      variants.forEach(variant => {
+      for (const variant of variants) {
         if (
           variant.name.toLowerCase().includes(keyword.toLowerCase()) &&
           variant.availability > 0 &&
           this.reservedAmount < this.maxTotalReservations
         ) {
-          this.getVariant(variant)
+          await this.getVariant(variant)
           this.variantIdsUsed.push(variant.id)
         }
-      })
+      }
     }
 
     // Reserve based on ticket index
@@ -76,21 +76,31 @@ class Bot {
         this.reservedAmount < this.maxTotalReservations &&
         !this.variantIdsUsed.includes(wantedVariant.id)
       ) {
-        this.getVariant(wantedVariant)
+        await this.getVariant(wantedVariant)
         this.variantIdsUsed.push(wantedVariant.id)
       }
     }
 
     // Reserve as many other variants as possible
-    variants.forEach(variant => {
+    for (const variant of variants) {
+      console.log(`Trying ${variant.name}`)
       if (
         !this.variantIdsUsed.includes(variant.id) &&
         variant.availability > 0 &&
         this.reservedAmount < this.maxTotalReservations
       ) {
-        this.getVariant(variant)
+        await this.getVariant(variant)
       }
-    })
+    }
+  }
+
+  async clearCart(): Promise<void> {
+    const cancelResponse = await kideService.clearShoppingCart(this.authToken)
+    if (cancelResponse.status === 400) {
+      this.sendStatusMessage('Could not clear shopping cart')
+      return
+    }
+    this.sendStatusMessage('Shopping cart cleared succesfully')
   }
 
   //############### PRIVATE #####################
@@ -103,15 +113,18 @@ class Bot {
       10
     )
 
-    this.reservedAmount += variantQuantity
-
     const response = await kideService.makeReservation(
       this.authToken,
       variant,
       variantQuantity
     )
-    const status = response.status !== 400 ? 'Success' : 'Fail'
-    this.sendStatusMessage(`${status} reserving type ${variant.name}`)
+
+    if (response.status === 400) {
+      this.sendStatusMessage(`Fail reserving type ${variant.name}`)
+    }
+    // Success
+    this.reservedAmount += variantQuantity
+    this.sendStatusMessage(`Success reserving type ${variant.name}`)
   }
 }
 

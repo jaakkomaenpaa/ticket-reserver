@@ -6,6 +6,7 @@ import styles from './Reservation.module.css'
 import { useEvent } from '../../hooks/useEvent'
 import { IoSend } from 'react-icons/io5'
 import { useAuthToken } from '../../hooks/useAuthToken'
+import { LocalStorageKey, ReserveMode } from '../../types'
 
 const Reservation = () => {
   const [accessAllowed, setAccessAllowed] = useState<boolean>(false)
@@ -35,7 +36,7 @@ const Reservation = () => {
     }
   }, [eventId, savedToken])
 
-  // Defina access and screen width
+  // Define access and screen width
   useEffect(() => {
     if (window.localStorage.getItem(config.ACCESS_KEY) === 'true') {
       setAccessAllowed(true)
@@ -66,11 +67,17 @@ const Reservation = () => {
     }
     const bot = await initBot(eventUrl, authToken, userPreferences, sendStatusMessage)
     if (!bot) {
+      sendStatusMessage('Could not start bot')
       return
     }
 
+    const mode =
+      (window.localStorage.getItem(LocalStorageKey.ReservationMode) as ReserveMode) ||
+      ReserveMode.Default
+
     setSaleStartTime(bot.saleStartTime)
-    await startBot(bot)
+    sendStatusMessage(`Started on mode: ${mode}`)
+    await startBot(bot, mode)
   }
 
   const sendStatusMessage = (message: string) => {

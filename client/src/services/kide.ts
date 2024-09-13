@@ -108,6 +108,21 @@ const cancelReservation = async (
   }
 }
 
+const clearShoppingCart = async (authToken: string): Promise<{ status: number }> => {
+  const headers = {
+    authorization: `Bearer ${reverseString(authToken)}`,
+  }
+  try {
+    const response = await axios.delete(config.KIDE_RESERVATION_URL, { headers })
+    console.log('Success clearing cart', response)
+    return response
+  } catch (error) {
+    console.log('Fail clearing cart')
+    console.error(error)
+    return { status: 400 }
+  }
+}
+
 const getEventsByCity = async (city: City): Promise<ApiProduct[]> => {
   let cityString: string = city
   if (city === City.Any) {
@@ -142,6 +157,7 @@ const exports = {
   getEvent,
   makeReservation,
   cancelReservation,
+  clearShoppingCart,
   getEventsByCity,
   getEventsBySearchText,
 }
